@@ -1,16 +1,28 @@
-# This is a sample Python script.
+from book import Book
+from library import Library
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# 1. Initialize our Library manager
+my_library = Library()
 
+# 2. Create some Book instances
+book1 = Book("The Hobbit", "J.R.R. Tolkien")
+book2 = Book("1984", "George Orwell")
+book3 = Book("Dune", "Frank Herbert")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# 3. Add them to the library
+my_library.add_link = ... # (or just use add_book)
+my_library.add_book(book1)
+my_library.add_book(book2)
+my_library.add_book(book3)
 
+print("\n--- Current Library Inventory ---")
+my_library.list_books()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# 4. Search for a specific book and check it out
+searched_book = my_library.find_book("1984")
+if searched_book:
+    print(f"\nFound: {searched_book.get_info()}")
+    searched_book.check_out()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print("\n--- Updated Inventory Status ---")
+my_library.list_books()
